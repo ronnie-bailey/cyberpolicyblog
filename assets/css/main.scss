@@ -946,3 +946,20 @@ body {
         padding: 1.5rem;
     }
 }
+
+/* FORCE DOCUMENT BACKGROUND - Add at bottom of file */
+.hero .document-background {
+    background: #f4f4f0 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.hero .document-content {
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 28px,
+        rgba(0, 0, 0, 0.05) 28px,
+        rgba(0, 0, 0, 0.05) 29px
+    ) !important;
+    color: #2a2a2a !important;
+}
