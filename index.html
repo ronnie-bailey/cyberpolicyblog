@@ -36,47 +36,18 @@ layout: default
             <h2>🏷️ Popular Topics</h2>
             <div class="tag-cloud">
                 <div class="tag-list">
-                    {% comment %}
-                    This automatically collects all tags from your posts and displays them by frequency
-                    {% endcomment %}
-                    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq %}
-                    {% assign tag_counts = '' | split: '' %}
-                    
-                    {% comment %}Calculate tag frequencies{% endcomment %}
-                    {% for tag in all_tags %}
-                        {% assign tag_count = site.posts | where_exp: "post", "post.tags contains tag" | size %}
-                        {% assign tag_data = tag | append: ':' | append: tag_count %}
-                        {% assign tag_counts = tag_counts | push: tag_data %}
-                    {% endfor %}
-                    
-                    {% comment %}Sort by frequency and display{% endcomment %}
-                    {% assign sorted_tags = tag_counts | sort %}
-                    {% for tag_data in sorted_tags reversed %}
-                        {% assign tag_parts = tag_data | split: ':' %}
-                        {% assign tag_name = tag_parts[0] %}
-                        {% assign tag_count = tag_parts[1] | plus: 0 %}
-                        
-                        {% comment %}Determine tag size based on frequency{% endcomment %}
-                        {% if tag_count >= 5 %}
-                            {% assign tag_size = 'tag-size-5' %}
-                        {% elsif tag_count >= 4 %}
-                            {% assign tag_size = 'tag-size-4' %}
-                        {% elsif tag_count >= 3 %}
-                            {% assign tag_size = 'tag-size-3' %}
-                        {% elsif tag_count >= 2 %}
-                            {% assign tag_size = 'tag-size-2' %}
-                        {% else %}
-                            {% assign tag_size = 'tag-size-1' %}
-                        {% endif %}
-                        
-                        {% assign display_name = tag_name | replace: '-', ' ' | capitalize %}
-                        
-                        <a href="/tags/{{ tag_name | slugify }}" 
-                           class="tag-item {{ tag_size }}" 
-                           title="{{ tag_count }} posts">
-                            {{ display_name }}
-                        </a>
-                    {% endfor %}
+                    <a href="{{ site.baseurl }}/tags/zero-trust" class="tag-item tag-size-5">Zero Trust</a>
+                    <a href="{{ site.baseurl }}/tags/nist-framework" class="tag-item tag-size-4">NIST Framework</a>
+                    <a href="{{ site.baseurl }}/tags/policy-analysis" class="tag-item tag-size-4">Policy Analysis</a>
+                    <a href="{{ site.baseurl }}/tags/threat-hunting" class="tag-item tag-size-3">Threat Hunting</a>
+                    <a href="{{ site.baseurl }}/tags/compliance" class="tag-item tag-size-3">Compliance</a>
+                    <a href="{{ site.baseurl }}/tags/cloud-security" class="tag-item tag-size-3">Cloud Security</a>
+                    <a href="{{ site.baseurl }}/tags/ai-governance" class="tag-item tag-size-2">AI Governance</a>
+                    <a href="{{ site.baseurl }}/tags/supply-chain" class="tag-item tag-size-2">Supply Chain</a>
+                    <a href="{{ site.baseurl }}/tags/incident-response" class="tag-item tag-size-2">Incident Response</a>
+                    <a href="{{ site.baseurl }}/tags/privacy" class="tag-item tag-size-1">Privacy</a>
+                    <a href="{{ site.baseurl }}/tags/encryption" class="tag-item tag-size-1">Encryption</a>
+                    <a href="{{ site.baseurl }}/tags/vulnerability-management" class="tag-item tag-size-1">Vulnerability Management</a>
                 </div>
             </div>
         </section>
@@ -85,252 +56,12 @@ layout: default
         <section class="featured-section">
             <h2>Featured Analysis</h2>
             <div class="featured-grid">
-                {% comment %}
-                This automatically shows your featured posts (posts with featured: true)
-                If no featured posts exist, it shows your 2 latest posts
-                {% endcomment %}
-                {% assign featured_posts = site.posts | where: "featured", true %}
-                {% if featured_posts.size > 0 %}
-                    {% comment %}Show featured posts{% endcomment %}
-                    {% for post in featured_posts limit: 2 %}
-                    <a href="{{ post.url | relative_url }}" class="featured-card">
-                        {% if post.featured_image %}
-                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="featured-image">
-                        {% else %}
-                        <div class="placeholder-image">{{ post.title | truncate: 20 }}</div>
-                        {% endif %}
-                        <div class="featured-content">
-                            {% if post.categories[0] == 'tech' %}
-                            <span class="category-tag tech-tag">{{ post.category_display | default: 'Technical' }}</span>
-                            {% elsif post.categories[0] == 'policy' %}
-                            <span class="category-tag policy-tag">{{ post.category_display | default: 'Policy' }}</span>
-                            {% else %}
-                            <span class="category-tag case-study-tag">{{ post.category_display | default: 'Case Study' }}</span>
-                            {% endif %}
-                            <h3 class="featured-title">{{ post.title }}</h3>
-                            <p class="featured-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                            <div class="article-meta">
-                                <span>{{ post.author | default: site.author.name }}</span>
-                                <span>•</span>
-                                <span>{{ post.read_time | default: 5 }} min read</span>
-                                {% if post.tags.size > 0 %}
-                                <span>•</span>
-                                <span>{{ post.tags.size }} tags</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                {% else %}
-                    {% comment %}Fallback to latest posts if no featured posts{% endcomment %}
-                    {% for post in site.posts limit: 2 %}
-                    <a href="{{ post.url | relative_url }}" class="featured-card">
-                        {% if post.featured_image %}
-                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="featured-image">
-                        {% else %}
-                        <div class="placeholder-image">{{ post.title | truncate: 20 }}</div>
-                        {% endif %}
-                        <div class="featured-content">
-                            {% if post.categories[0] == 'tech' %}
-                            <span class="category-tag tech-tag">{{ post.category_display | default: 'Technical' }}</span>
-                            {% elsif post.categories[0] == 'policy' %}
-                            <span class="category-tag policy-tag">{{ post.category_display | default: 'Policy' }}</span>
-                            {% else %}
-                            <span class="category-tag case-study-tag">{{ post.category_display | default: 'Case Study' }}</span>
-                            {% endif %}
-                            <h3 class="featured-title">{{ post.title }}</h3>
-                            <p class="featured-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                            <div class="article-meta">
-                                <span>{{ post.author | default: site.author.name }}</span>
-                                <span>•</span>
-                                <span>{{ post.read_time | default: 5 }} min read</span>
-                                {% if post.tags.size > 0 %}
-                                <span>•</span>
-                                <span>{{ post.tags.size }} tags</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </section>
-
-        <!-- Recent Articles -->
-        <section class="articles-section">
-            <h2>Recent Articles</h2>
-            <div class="articles-grid">
-                {% comment %}
-                This automatically shows all your posts (except those already featured)
-                Every new post you add will appear here automatically
-                {% endcomment %}
-                {% assign featured_posts = site.posts | where: "featured", true %}
-                {% assign featured_urls = featured_posts | map: "url" %}
-                {% assign non_featured_posts = site.posts | where_exp: "post", "featured_urls contains post.url == false" %}
-                
-                {% for post in non_featured_posts limit: 6 %}
-                <a href="{{ post.url | relative_url }}" class="article-card {{ post.categories[0] }}">
+                {% for post in site.posts limit: 2 %}
+                <a href="{{ post.url | relative_url }}" class="featured-card">
                     {% if post.featured_image %}
-                    <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="article-preview-image">
+                    <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="featured-image">
                     {% else %}
-                    {% comment %}Default images based on category{% endcomment %}
-                    {% if post.categories[0] == 'tech' %}
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=180&fit=crop" alt="{{ post.title }}" class="article-preview-image">
-                    {% elsif post.categories[0] == 'policy' %}
-                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=180&fit=crop" alt="{{ post.title }}" class="article-preview-image">
-                    {% else %}
-                    <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=300&h=180&fit=crop" alt="{{ post.title }}" class="article-preview-image">
+                    <div class="placeholder-image">{{ post.title | truncate: 20 }}</div>
                     {% endif %}
-                    {% endif %}
-                    <div class="article-content">
-                        {% if post.categories[0] == 'tech' %}
-                        <span class="category-tag tech-tag">{{ post.category_display | default: 'Technical' }}</span>
-                        {% elsif post.categories[0] == 'policy' %}
-                        <span class="category-tag policy-tag">{{ post.category_display | default: 'Policy' }}</span>
-                        {% else %}
-                        <span class="category-tag case-study-tag">{{ post.category_display | default: 'Case Study' }}</span>
-                        {% endif %}
-                        <h3 class="article-title">{{ post.title }}</h3>
-                        <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                        <div class="article-meta">
-                            <span>{{ post.author | default: site.author.name }}</span>
-                            <span>•</span>
-                            <span>{{ post.read_time | default: 5 }} min read</span>
-                            <span>•</span>
-                            <span>{{ post.date | date: "%b %d, %Y" }}</span>
-                        </div>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        </section>
-    </div>
-
-    <!-- Right Column - Author Bio -->
-    <aside class="author-bio-sidebar">
-        <div class="author-section">
-            <div class="author-avatar">{{ site.author.name | slice: 0, 2 | upcase }}</div>
-            <h3 class="author-name">{{ site.author.name }}</h3>
-            <p class="author-title">{{ site.author.title }}</p>
-            <div class="credentials">
-                {% for credential in site.author.credentials %}
-                <span class="credential-badge">{{ credential }}</span>
-                {% endfor %}
-            </div>
-            <p class="author-bio">{{ site.author.bio }}</p>
-        </div>
-
-        <div class="contact-note">
-            For speaking engagements and consulting inquiries, 
-            <a href="/contact">contact me directly</a>.
-        </div>
-    </aside>
-</div>
-
-<script>
-const documentLines = [
-    "SUBJECT: NATIONAL CYBERSECURITY INFRASTRUCTURE ASSESSMENT",
-    "DATE: [REDACTED] CLASSIFICATION: TOP SECRET",
-    "",
-    "1. EXECUTIVE SUMMARY",
-    "The comprehensive analysis of critical infrastructure vulnerabilities reveals",
-    "significant gaps in current defensive postures. Implementation of NIST",
-    "Cybersecurity Framework across federal agencies shows [REDACTED] compliance",
-    "rates with particular weaknesses in the IDENTIFY and PROTECT functions.",
-    "",
-    "2. THREAT LANDSCAPE ANALYSIS", 
-    "Advanced Persistent Threats (APTs) have demonstrated sophisticated",
-    "capabilities targeting [REDACTED] sectors including energy, healthcare,",
-    "and financial services. Attribution analysis indicates state-sponsored",
-    "actors from [REDACTED] and [REDACTED] conducting coordinated campaigns.",
-    "",
-    "3. ZERO TRUST ARCHITECTURE IMPLEMENTATION",
-    "Current migration to Zero Trust principles across government agencies",
-    "has achieved [REDACTED]% completion. Critical findings include:",
-    "- Identity verification protocols require enhancement",
-    "- Network segmentation incomplete in [REDACTED] departments",
-    "- Continuous monitoring capabilities at [REDACTED]% effectiveness",
-    "",
-    "4. POLICY RECOMMENDATIONS",
-    "Immediate actions required include enhanced coordination between",
-    "[REDACTED] and private sector entities. Budget allocation of $[REDACTED]",
-    "recommended for fiscal year 2025 cybersecurity initiatives.",
-    "",
-    "5. CLASSIFICATION REVIEW",
-    "This document contains information affecting national security.",
-    "Unauthorized disclosure subject to criminal penalties under 18 USC 798."
-];
-
-const stamps = [
-    "CLASSIFIED",
-    "TOP SECRET", 
-    "CONFIDENTIAL",
-    "EYES ONLY",
-    "NOFORN",
-    "RESTRICTED DATA"
-];
-
-function createDocumentLines() {
-    const docBody = document.getElementById('docBody');
-    
-    documentLines.forEach((line, index) => {
-        const lineDiv = document.createElement('div');
-        lineDiv.className = 'doc-line';
-        
-        if (line.trim() === '') {
-            lineDiv.innerHTML = '&nbsp;';
-        } else {
-            const textSpan = document.createElement('span');
-            textSpan.className = 'line-text';
-            textSpan.textContent = line;
-            lineDiv.appendChild(textSpan);
-            
-            // Add redaction bars to certain lines
-            if (Math.random() < 0.4 && line.includes('[REDACTED]')) {
-                const redactionBar = document.createElement('div');
-                redactionBar.className = 'redaction-bar moving';
-                redactionBar.style.animationDelay = `${Math.random() * 4}s`;
-                redactionBar.style.left = `${Math.random() * 30}%`;
-                lineDiv.appendChild(redactionBar);
-            }
-            
-            // Add static redaction bars
-            if (Math.random() < 0.3) {
-                const staticBar = document.createElement('div');
-                staticBar.className = 'redaction-bar static';
-                staticBar.style.width = `${20 + Math.random() * 40}%`;
-                staticBar.style.left = `${Math.random() * 50}%`;
-                lineDiv.appendChild(staticBar);
-            }
-        }
-        
-        docBody.appendChild(lineDiv);
-    });
-}
-
-function createFloatingStamps() {
-    const container = document.getElementById('floatingStamps');
-    
-    setInterval(() => {
-        const stamp = document.createElement('div');
-        stamp.className = 'stamp';
-        stamp.textContent = stamps[Math.floor(Math.random() * stamps.length)];
-        stamp.style.top = Math.random() * 80 + 10 + '%';
-        stamp.style.left = Math.random() * 80 + 10 + '%';
-        stamp.style.transform = `rotate(${(Math.random() - 0.5) * 30}deg)`;
-        stamp.style.animationDelay = `${Math.random() * 2}s`;
-        
-        container.appendChild(stamp);
-        
-        setTimeout(() => {
-            stamp.remove();
-        }, 8000);
-    }, 6000);
-}
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    createDocumentLines();
-    createFloatingStamps();
-});
-</script>
+                    <div class="featured-content">
+                        {% if post.categories contains 'tech' %}
