@@ -1,0 +1,139 @@
+---
+layout: default
+---
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Where Deep Tech Meets Policy</h1>
+        <p>Security insights for geeks and chiefs. Bridging cybersecurity implementation with strategic policy analysis.</p>
+        <a href="#content" class="cta-button">Explore Latest Analysis</a>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="main-container" id="content">
+    <!-- Left Column -->
+    <div class="left-column">
+        <!-- Tag Cloud Section -->
+        <section class="tag-cloud-section">
+            <h2>🏷️ Popular Topics</h2>
+            <div class="tag-cloud">
+                <div class="tag-list">
+                    <a href="/tags/zero-trust" class="tag-item tag-size-5">Zero Trust</a>
+                    <a href="/tags/cloud-security" class="tag-item tag-size-5">Cloud Security</a>
+                    <a href="/tags/surveillance-pricing" class="tag-item tag-size-4">Surveillance Pricing</a>
+                    <a href="/tags/data-privacy" class="tag-item tag-size-4">Data Privacy</a>
+                    <a href="/tags/identity-management" class="tag-item tag-size-4">Identity Management</a>
+                    <a href="/tags/ai-regulation" class="tag-item tag-size-3">AI Regulation</a>
+                    <a href="/tags/compliance" class="tag-item tag-size-3">Compliance</a>
+                    <a href="/tags/threat-analysis" class="tag-item tag-size-3">Threat Analysis</a>
+                    <a href="/tags/incident-response" class="tag-item tag-size-2">Incident Response</a>
+                    <a href="/tags/policy-analysis" class="tag-item tag-size-2">Policy Analysis</a>
+                    <a href="/tags/facial-recognition" class="tag-item tag-size-2">Facial Recognition</a>
+                    <a href="/tags/retail-surveillance" class="tag-item tag-size-1">Retail Surveillance</a>
+                    <a href="/tags/crowdstrike" class="tag-item tag-size-2">CrowdStrike</a>
+                    <a href="/tags/kroger" class="tag-item tag-size-2">Kroger</a>
+                    <a href="/tags/ftc" class="tag-item tag-size-1">FTC</a>
+                    <a href="/tags/gdpr" class="tag-item tag-size-2">GDPR</a>
+                    <a href="/tags/microsoft" class="tag-item tag-size-3">Microsoft</a>
+                    <a href="/tags/azure" class="tag-item tag-size-3">Azure</a>
+                    <a href="/tags/aws" class="tag-item tag-size-2">AWS</a>
+                    <a href="/tags/okta" class="tag-item tag-size-2">Okta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Analysis -->
+        <section class="featured-section">
+            <h2>Featured Analysis</h2>
+            <div class="featured-grid">
+                <a href="/blog/kroger-surveillance/" class="featured-card">
+                    <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&h=200&fit=crop" alt="Kroger Surveillance Analysis" class="featured-image">
+                    <div class="featured-content">
+                        <span class="category-tag case-study-tag">Case Study</span>
+                        <h3 class="featured-title">Kroger's Data Practices: Surveillance, Pricing, and Privacy</h3>
+                        <p class="featured-excerpt">Deep analysis of Kroger's $450M data monetization empire and its impact on consumer privacy...</p>
+                        <div class="article-meta">
+                            <span>{{ site.author.name }}</span>
+                            <span>•</span>
+                            <span>12 min read</span>
+                            <span>•</span>
+                            <span>5 diagrams</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/blog/zero-trust-implementation/" class="featured-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop" alt="Zero Trust Architecture" class="featured-image">
+                    <div class="featured-content">
+                        <span class="category-tag tech-tag">Technical Deep Dive</span>
+                        <h3 class="featured-title">Zero Trust Implementation: From Theory to Practice</h3>
+                        <p class="featured-excerpt">Comprehensive guide to deploying Zero Trust architecture in enterprise environments...</p>
+                        <div class="article-meta">
+                            <span>{{ site.author.name }}</span>
+                            <span>•</span>
+                            <span>15 min read</span>
+                            <span>•</span>
+                            <span>Code examples</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Recent Articles -->
+        <section class="articles-section">
+            <h2>Recent Articles</h2>
+            <div class="articles-grid">
+                {% for post in site.posts limit:6 %}
+                <a href="{{ post.url | relative_url }}" class="article-card {{ post.categories[0] }}">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="article-preview-image">
+                    {% else %}
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=180&fit=crop" alt="{{ post.title }}" class="article-preview-image">
+                    {% endif %}
+                    <div class="article-content">
+                        {% if post.categories[0] == 'tech' %}
+                        <span class="category-tag tech-tag">{{ post.category_display | default: 'Technical' }}</span>
+                        {% elsif post.categories[0] == 'policy' %}
+                        <span class="category-tag policy-tag">{{ post.category_display | default: 'Policy' }}</span>
+                        {% else %}
+                        <span class="category-tag case-study-tag">{{ post.category_display | default: 'Case Study' }}</span>
+                        {% endif %}
+                        <h3 class="article-title">{{ post.title }}</h3>
+                        <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                        <div class="article-meta">
+                            <span>{{ post.author | default: site.author.name }}</span>
+                            <span>•</span>
+                            <span>{{ post.read_time | default: 5 }} min read</span>
+                            <span>•</span>
+                            <span>{{ post.date | date: "%b %d, %Y" }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Right Column - Author Bio -->
+    <aside class="author-bio-sidebar">
+        <div class="author-section">
+            <div class="author-avatar">{{ site.author.name | slice: 0, 2 | upcase }}</div>
+            <h3 class="author-name">{{ site.author.name }}</h3>
+            <p class="author-title">{{ site.author.title }}</p>
+            <div class="credentials">
+                {% for credential in site.author.credentials %}
+                <span class="credential-badge">{{ credential }}</span>
+                {% endfor %}
+            </div>
+            <p class="author-bio">{{ site.author.bio }}</p>
+        </div>
+
+        <div class="contact-note">
+            For speaking engagements and consulting inquiries, 
+            <a href="/contact">contact me directly</a>.
+        </div>
+    </aside>
+</div>
