@@ -3,78 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Federal Layoffs: The Hidden Cybersecurity Crisis - CyberPolicy Lab</title>
+    <title>Federal Layoffs: The Hidden Cybersecurity Crisis</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
+            margin: 0;
+            padding: 2rem;
         }
         
-        /* Header Navigation */
-        .header {
-            background: #2c3e50;
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        
-        .nav-menu a:hover {
-            opacity: 0.8;
-        }
-        
-        /* Main Content Layout */
-        .main-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 300px;
             gap: 3rem;
-            padding: 2rem;
         }
         
-        /* Article Content */
-        .article-content {
+        .main-content {
             background: white;
             padding: 3rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .case-study-badge {
@@ -89,19 +40,10 @@
             margin-bottom: 1rem;
         }
         
-        .article-meta {
+        .meta {
             color: #666;
             font-size: 0.9rem;
             margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        
-        .article-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         h1 {
@@ -112,7 +54,7 @@
             line-height: 1.2;
         }
         
-        .article-subtitle {
+        .subtitle {
             color: #666;
             font-size: 1.1rem;
             margin-bottom: 2rem;
@@ -120,17 +62,16 @@
         }
         
         h2 {
-            color: #2c3e50;
+            color: #1a1a1a;
             font-size: 1.8rem;
             font-weight: 600;
             margin-top: 3rem;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 0.5rem;
+            line-height: 1.3;
         }
         
         h3 {
-            color: #34495e;
+            color: #333;
             font-size: 1.4rem;
             font-weight: 600;
             margin-top: 2rem;
@@ -139,12 +80,13 @@
         
         p {
             margin-bottom: 1.5rem;
+            font-size: 1rem;
             line-height: 1.7;
         }
         
         ul {
             margin-bottom: 1.5rem;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
         }
         
         li {
@@ -152,12 +94,16 @@
             line-height: 1.6;
         }
         
+        strong {
+            font-weight: 600;
+        }
+        
         .code-block {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 6px;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            padding: 1rem;
+            margin: 1.5rem 0;
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
             text-align: center;
@@ -165,120 +111,44 @@
         }
         
         .highlight-box {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
             border-radius: 0 6px 6px 0;
         }
         
         .warning-box {
-            background: #fff8e1;
-            border: 1px solid #ffcc02;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
             border-radius: 6px;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
         }
         
         .warning-box h4 {
-            color: #f57c00;
+            color: #856404;
             margin-top: 0;
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
         
-        /* Sidebar */
-        .sidebar {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            height: fit-content;
-            position: sticky;
-            top: 120px;
-        }
-        
-        .toc-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .toc-icon {
-            width: 20px;
-            height: 20px;
-            background: #e9ecef;
-            border-radius: 3px;
-        }
-        
-        .toc-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .toc-item {
-            margin-bottom: 0.5rem;
-        }
-        
-        .toc-item a {
-            color: #666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: block;
-            padding: 0.5rem 0;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        .toc-item a:hover {
-            background: #f8f9fa;
-            color: #2c3e50;
-            padding-left: 0.5rem;
-        }
-        
-        .toc-item.active a {
-            background: #e3f2fd;
-            color: #1976d2;
-            font-weight: 500;
-            padding-left: 0.5rem;
-        }
-        
-        .toc-sub {
-            margin-left: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .toc-sub a {
-            font-size: 0.85rem;
-        }
-        
-        /* Tags */
         .tags {
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid #e9ecef;
         }
         
-        .tags-label {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
         .tag {
             display: inline-block;
             background: #007bff;
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
             font-size: 0.8rem;
             margin: 0.25rem 0.25rem 0.25rem 0;
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.3s;
         }
         
         .tag:hover {
@@ -295,22 +165,82 @@
             font-size: 0.9rem;
         }
         
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .toc-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .toc-icon {
+            width: 20px;
+            height: 16px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>') no-repeat center;
+            background-size: contain;
+            opacity: 0.6;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-item a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        
+        .toc-item a:hover {
+            color: #007bff;
+        }
+        
+        .toc-item.active a {
+            color: #007bff;
+            font-weight: 500;
+        }
+        
+        .toc-sub {
+            margin-left: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .toc-sub .toc-item a {
+            font-size: 0.85rem;
+            color: #8e9aaf;
+        }
+        
         @media (max-width: 768px) {
-            .main-container {
+            .container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
                 padding: 1rem;
             }
             
-            .nav-container {
-                padding: 0 1rem;
+            body {
+                padding: 1rem;
             }
             
-            .nav-menu {
-                gap: 1rem;
-            }
-            
-            .article-content {
+            .main-content {
                 padding: 2rem;
             }
             
@@ -321,49 +251,27 @@
     </style>
 </head>
 <body>
-    <!-- Header Navigation -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">CyberPolicy Lab</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#threat-analysis">Threat Analysis</a></li>
-                    <li><a href="#policy-insights">Policy Insights</a></li>
-                    <li><a href="#case-studies">Case Studies</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="main-container">
-        <!-- Article Content -->
-        <main class="article-content">
+    <div class="container">
+        <main class="main-content">
             <div class="case-study-badge">CASE STUDY</div>
             
-            <div class="article-meta">
-                <span>By Ronnie Bailey</span>
-                <span>•</span>
-                <span>May 29, 2025</span>
-                <span>•</span>
-                <span>8 min read</span>
+            <div class="meta">
+                By Ronnie Bailey • May 29, 2025 • 8 min read
             </div>
 
             <h1>Federal Layoffs: The Hidden Cybersecurity Crisis</h1>
             
-            <p class="article-subtitle">Federal layoffs create an unprecedented cybersecurity vulnerability as displaced government employees enter an AI-saturated job market without proper knowledge sanitization or insider threat mitigation protocols.</p>
+            <p class="subtitle">Federal layoffs create an unprecedented cybersecurity vulnerability as displaced government employees enter an AI-saturated job market without proper knowledge sanitization or insider threat mitigation protocols.</p>
 
-            <h2 id="executive-summary">Executive Summary</h2>
+            <h2>Executive Summary</h2>
             
             <p>The current wave of federal layoffs presents more than just an employment crisis—it represents a critical national security vulnerability that's being systematically overlooked. While public discourse focuses on the human impact of job losses, the cybersecurity implications of displacing thousands of government employees with sensitive knowledge access remain largely unaddressed.</p>
 
             <p>These aren't typical private sector layoffs. Federal employees carry institutional knowledge about systems, workflows, configurations, and operational procedures that took years to develop and could prove invaluable to adversaries. Yet there's no standardized "knowledge sanitization" process being implemented as these individuals transition to the private sector.</p>
 
-            <h2 id="threat-landscape">The Modern Threat Landscape</h2>
+            <h2>The Modern Threat Landscape</h2>
 
-            <h3 id="ai-driven-social-engineering">AI-Driven Social Engineering</h3>
+            <h3>AI-Driven Social Engineering</h3>
             
             <p>Displaced federal workers are stepping into a job market fundamentally transformed by artificial intelligence. The threats they face aren't the phishing emails of the early 2000s—they're sophisticated, AI-generated attacks designed to exploit human psychology and harvest sensitive information.</p>
 
@@ -383,9 +291,9 @@
                 <li><strong>Deepfake Technology:</strong> Video interviews with artificial personas</li>
             </ul>
 
-            <h2 id="knowledge-leakage">Knowledge Leakage Vectors</h2>
+            <h2>Knowledge Leakage Vectors</h2>
 
-            <h3 id="uncontrolled-disclosure">Uncontrolled Information Disclosure</h3>
+            <h3>Uncontrolled Information Disclosure</h3>
 
             <div class="warning-box">
                 <h4>Real-World Example</h4>
@@ -401,9 +309,9 @@
                 <li><strong>Organizational Structure:</strong> Reporting hierarchies and key personnel information</li>
             </ul>
 
-            <h2 id="regulatory-gaps">Regulatory and Framework Gaps</h2>
+            <h2>Regulatory and Framework Gaps</h2>
 
-            <h3 id="absence-protocols">Absence of Standardized Protocols</h3>
+            <h3>Absence of Standardized Protocols</h3>
 
             <p>Despite the existence of frameworks like NIST SP 800-171, there's no standardized approach to insider risk mitigation during federal layoffs. The current process treats departing employees as an HR issue rather than a cybersecurity concern, leaving critical gaps in:</p>
 
@@ -418,9 +326,9 @@
                 <strong>Critical Gap:</strong> In most cases, comprehensive exit interviews covering cybersecurity implications don't occur outside of initial onboarding discussions—if they happen at all.
             </div>
 
-            <h2 id="mitigation-strategies">Mitigation Strategies</h2>
+            <h2>Mitigation Strategies</h2>
 
-            <h3 id="for-agencies">For Government Agencies</h3>
+            <h3>For Government Agencies</h3>
 
             <ul>
                 <li><strong>Implement Knowledge Sanitization:</strong> Formal processes to document and contain sensitive information</li>
@@ -429,7 +337,7 @@
                 <li><strong>Secure Transition Support:</strong> Guidance on safe job search practices</li>
             </ul>
 
-            <h3 id="for-workers">For Displaced Federal Workers</h3>
+            <h3>For Displaced Federal Workers</h3>
 
             <ul>
                 <li><strong>Verify Interview Authenticity:</strong> Confirm recruiter identities through multiple channels</li>
@@ -438,20 +346,19 @@
                 <li><strong>Document Suspicious Contacts:</strong> Report potential social engineering attempts</li>
             </ul>
 
-            <h2 id="national-security">National Security Implications</h2>
+            <h2>National Security Implications</h2>
 
             <p>The intersection of federal layoffs and modern cyber threats creates a national security vulnerability that extends far beyond individual job searches. When multiplied across thousands of displaced workers, the potential for intelligence gathering, system mapping, and operational insight harvesting becomes a strategic concern.</p>
 
             <p>This isn't paranoia—it's threat modeling based on observable attack patterns and known adversary capabilities. Nation-state actors and sophisticated criminal organizations have demonstrated the patience and resources to conduct long-term intelligence operations through seemingly legitimate business interactions.</p>
 
-            <h2 id="conclusion">Conclusion</h2>
+            <h2>Conclusion</h2>
 
             <p>Federal layoffs represent a convergence of data sovereignty concerns, threat modeling challenges, and national security implications that demand immediate attention. The current approach treats departing employees as an administrative matter while ignoring the cybersecurity dimensions of their transition.</p>
 
             <p>Without proper protocols for knowledge sanitization, insider threat mitigation, and secure job search guidance, we're creating a systematic vulnerability that adversaries can exploit at scale. The solution requires treating federal layoffs not just as an HR challenge, but as a critical cybersecurity operation requiring the same rigor applied to other national security concerns.</p>
 
             <div class="tags">
-                <div class="tags-label">Tags:</div>
                 <a href="#" class="tag">#CyberSecurity</a>
                 <a href="#" class="tag">#NationalSecurity</a>
                 <a href="#" class="tag">#FederalLayoffs</a>
@@ -474,7 +381,6 @@
             </div>
         </main>
 
-        <!-- Sidebar Table of Contents -->
         <aside class="sidebar">
             <div class="toc-header">
                 <div class="toc-icon"></div>
