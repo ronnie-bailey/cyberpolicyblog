@@ -100,7 +100,7 @@ body {
 .hero {
     position: relative;
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,19 +108,19 @@ body {
 }
 
 .document-background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-2deg);
-    width: 85%;
-    max-width: 900px;
-    height: 85%;
-    background: var(--document-bg);
-    box-shadow: 0 20px 60px var(--paper-shadow);
-    border-radius: 8px;
-    opacity: 0.95;
-    z-index: 1;
-    overflow: hidden;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-2deg) !important;
+    width: 85% !important;
+    max-width: 900px !important;
+    height: 85% !important;
+    background: #f4f4f0 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 8px !important;
+    opacity: 0.95 !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
 }
 
 .document-content {
