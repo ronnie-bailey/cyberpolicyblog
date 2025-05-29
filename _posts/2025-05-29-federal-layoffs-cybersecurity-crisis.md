@@ -6,155 +6,146 @@
     <title>Federal Layoffs: The Hidden Cybersecurity Crisis</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
-        
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header {
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding: 2rem;
+            background-color: #fff;
         }
         
         h1 {
-            color: #2c3e50;
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
         
-        .meta-info {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-        
-        .excerpt {
-            background: #ecf0f1;
-            padding: 20px;
-            border-left: 4px solid #3498db;
-            margin-bottom: 30px;
-            font-style: italic;
-            font-size: 1.1em;
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
         
         h2 {
-            color: #2980b9;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
         
         h3 {
-            color: #34495e;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            color: #333;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
         
         p {
-            margin-bottom: 18px;
-            text-align: justify;
-        }
-        
-        .highlight {
-            background: #fff3cd;
-            padding: 15px;
-            border-left: 4px solid #ffc107;
-            margin: 20px 0;
-        }
-        
-        .threat-flow {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            font-size: 0.95em;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         ul {
-            padding-left: 20px;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
         }
         
         li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #495057;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .warning-box h4 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
         
         .tags {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
         }
         
         .tag {
             display: inline-block;
-            background: #3498db;
+            background: #007bff;
             color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            margin: 3px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
             text-decoration: none;
+            font-weight: 500;
         }
         
         .tag:hover {
-            background: #2980b9;
-        }
-        
-        .warning-box {
-            background: #fee;
-            border: 1px solid #f5c6cb;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-        
-        .warning-box h4 {
-            color: #721c24;
-            margin-top: 0;
+            background: #0056b3;
+            color: white;
         }
         
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
             font-style: italic;
-            color: #7f8c8d;
-            font-size: 0.9em;
+            color: #666;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Federal Layoffs: The Hidden Cybersecurity Crisis</h1>
-            <div class="meta-info">
-                Published: May 29, 2025 | Category: Cybersecurity Analysis | Read Time: 8 minutes
-            </div>
-        </div>
+<body>
+    <h1>Federal Layoffs: The Hidden Cybersecurity Crisis</h1>
+    <div class="meta">
+        Published: May 29, 2025 | Category: Cybersecurity Analysis | Read Time: 8 minutes
+    </div>
 
-        <div class="excerpt">
-            Federal layoffs create an unprecedented cybersecurity vulnerability as displaced government employees enter an AI-saturated job market without proper knowledge sanitization or insider threat mitigation protocols.
-        </div>
+    ## Executive Summary
 
-        <h2>The Overlooked Security Dimension</h2>
+    Federal layoffs create an unprecedented cybersecurity vulnerability as displaced government employees enter an AI-saturated job market without proper knowledge sanitization or insider threat mitigation protocols.
+
+    ## The Overlooked Security Dimension
         
         <p>The current wave of federal layoffs presents more than just an employment crisis—it represents a critical national security vulnerability that's being systematically overlooked. While public discourse focuses on the human impact of job losses, the cybersecurity implications of displacing thousands of government employees with sensitive knowledge access remain largely unaddressed.</p>
 
@@ -166,7 +157,7 @@
         
         <p>Displaced federal workers are stepping into a job market fundamentally transformed by artificial intelligence. The threats they face aren't the phishing emails of the early 2000s—they're sophisticated, AI-generated attacks designed to exploit human psychology and harvest sensitive information.</p>
 
-        <div class="threat-flow">
+        <div class="code-block">
             Job Search → AI-Generated Fake Recruiters → Virtual Interviews → 
             <br>Information Harvesting → System Intelligence Gathering → National Security Risk
         </div>
@@ -213,7 +204,7 @@
             <li><strong>Secure Transition Protocols:</strong> Proper handoff procedures for sensitive roles</li>
         </ul>
 
-        <div class="highlight">
+        <div class="highlight-box">
             <strong>Critical Gap:</strong> In most cases, comprehensive exit interviews covering cybersecurity implications don't occur outside of initial onboarding discussions—if they happen at all.
         </div>
 
@@ -270,6 +261,5 @@
         <div class="footer">
             <p><em>This analysis draws from ongoing research into federal workforce cybersecurity challenges and observed threat patterns in the current employment landscape.</em></p>
         </div>
-    </div>
 </body>
 </html>
